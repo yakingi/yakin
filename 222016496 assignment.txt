@@ -1,0 +1,89 @@
+                                                            tumukunde yakin 
+                                                            222016496
+1)
+#!/bin/bash 
+ 
+# Check if the number of arguments is not equal to 3 
+if [ $# -ne 3 ]; then 
+    echo "Error: The script requires  3 arguments." > error.txt 
+    exit 1 
+fi 
+ 
+# If the number of arguments is correct, sort the numbers in ascending order and write them to a file 
+echo -e "$1\n$2\n$3" | sort -n > numbers.txt 
+
+
+2)
+#!/bin/bash 
+# Check if the number of arguments is not equal to 1 
+if [ $# -ne 1 ]; then 
+    echo "Error: The script requires exactly 1 argument." > error.txt     exit 1 
+fi  
+# If the number of arguments is correct, count the number of files and subdirectories num_files=$(find "$1" -type f | wc -l)
+ num_dirs=$(find "$1" -type d | wc -l) 
+ 
+# Write the counts to accounts.txt 
+echo "Number of files: $num_files" > accounts.txt echo "Number of subdirectories: $num_dirs" >> accounts.txt 
+
+3)
+#!/bin/bash 
+ 
+# Check if the number of arguments is not equal to 1
+ if [ $# -ne 1 ]; then 
+    echo "Error: The script requires exactly 1 argument." > error.txt     exit 1 
+fi 
+ 
+# If the number of arguments is correct, evaluate the arithmetic expression
+ result=$(echo "$1" | bc) 
+ 
+# Display the result 
+echo "$1 = $result" 
+ 
+4)
+#!/bin/bash
+
+# Check if the number of arguments is correct
+if [ "$#" -ne 1 ]; then
+    echo "Error: Incorrect number of arguments." > error.txt
+    exit 1
+fi
+
+# Check if the argument is a positive integer
+If [ "$1"  -le  0 ]; then
+    echo "Error: Argument is not a positive integer." > error.txt
+    exit 1
+fi
+
+# Calculate the factorial
+factorial=1
+for (( i=1; i<=$1; i++ )); do
+    factorial=$((factorial * i))
+done
+
+# Print the result
+echo "$1! = $factorial"
+
+ 
+5)
+#!/bin/bash 
+ 
+# Check if the number of arguments is not equal to 2 
+if [ $# -ne 2 ]; then 
+    echo "Error: The script requires exactly 2 arguments."     exit 1
+ fi  
+# Check if the arguments are not directories
+ if [ ! -d "$1" ] || [ ! -d "$2" ]; then 
+    echo "Error: Both arguments must be directories."     exit 1 
+fi 
+ 
+# Delete from directory 1 all the files that are also in directory 2 
+for file in "$1"/*; 
+do 
+    if [ -f "$file" ] && [ -f "$2/$(basename "$file")" ]; then         rm "$file"   
+  fi 
+done 
+ 
+echo "Operation completed successfully" 
+ 
+
+
